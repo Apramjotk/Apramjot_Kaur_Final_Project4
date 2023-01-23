@@ -1,0 +1,66 @@
+body {
+  background-image: url("background.png");
+  background-repeat: no repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+input {
+  background-color: #9ffb93;
+}
+.parent-container {
+  display: flex;
+}
+.containerA {
+  align-self: flex-start; /* this will align the items in container A to the left */
+}
+.containerB {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.containerC {
+  align-self: flex-end;
+  flex: 1;
+}
+
+.item {
+  background: linear-gradient(yellow, orange);
+  color: black;
+  font-size: 15px;
+  border: 2px solid red;
+  line-height: 20px;
+  border-radius: 40px;
+  margin: 30px;
+}
+h1 {
+  text-align: center;
+  font: bold 18pt comic sans ms;
+  color: navy;
+}
+
+div {
+  text-align: center;
+  font: bold 12pt comic sans ms;
+  color: navy;
+}
+
+span {
+  text-align: center;
+  font: bold 15pt comic sans ms;
+  text-decoration: #000080;
+}
+
+h3 {
+  color: rgb(0, 51, 0);
+}
+
+p {
+  font: bold 12pt comic sans ms;
+  text-align: center;
+  color: rgb(102, 0, 204);
+}
+
+button {
+  background-color: Transparent;
+}
