@@ -5,7 +5,7 @@ function initialize() {
   const addButton = document.querySelector("#add1");
   addButton.addEventListener("click", add_element);
   const recordRemove = document.querySelector("#remove1");
-  recordRemove.addEventListener("click", removeElementByNumber);
+  recordRemove.addEventListener("click", removeElementByName);
   const moveUpButtons = document.querySelector("#moveUp1");
   moveUpButtons.addEventListener("click", moveItemsUp);
   const moveDownButtons = document.querySelector("#moveDown1");
@@ -21,6 +21,14 @@ let add_element = () => {
 };
 function findMatchingStrings(arr) {
   groceryListSimplfy = [];
+  groceryList.sort(function (a, b) {
+    var indexA = arr.indexOf(a);
+    var indexB = arr.indexOf(b);
+    if (indexA !== indexB) {
+      return indexA - indexB;
+    }
+    return a.localeCompare(b);
+  });
   var stringCount = {};
   for (var i = 0; i < arr.length; i++) {
     var string = arr[i].toLowerCase();
@@ -35,7 +43,6 @@ function findMatchingStrings(arr) {
   }
   return groceryListSimplfy;
 }
-
 function display() {
   const container = document.querySelector(".containerA"); // container div where items will be displayed
   container.textContent = "";
@@ -47,13 +54,19 @@ function display() {
   }
 }
 
-let removeElementByNumber = () => {
-  let number = Number(document.getElementById("remove").value);
-  if (number !== "" && typeof number === "number") {
-    let removing = groceryList.splice(
-      document.getElementById("remove").value - 1,
-      1
-    );
+let removeElementByName = () => {
+  let name = document.getElementById("remove").value.toLowerCase();
+  if (name !== "") {
+    let index = -1;
+    for (let i = 0; i < groceryList.length; i++) {
+      if (groceryList[i].toLowerCase() === name) {
+        index = i;
+        break;
+      }
+    }
+    if (index !== -1) {
+      groceryList.splice(index, 1);
+    }
   }
   document.getElementById("remove").value = "";
   findMatchingStrings(groceryList);
